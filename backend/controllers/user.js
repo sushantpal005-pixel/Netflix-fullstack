@@ -7,7 +7,7 @@ export const Register = async(req, res)=>{
     try{
         const {fullName, email, password} = req.body
         if(!fullName || !email || !password){
-            return res.statuts(401).json({
+            return res.status(401).json({
                 message: "Invalid data",
                 success: false
             })
@@ -63,8 +63,9 @@ export const Login = async(req, res)=>{
             id: user._id
         }
         const token = await jwt.sign(tokenData, "ajfjafkjagkagdvbroiaqptf", {expiresIn: "1d"})
-        return res.status(400).cookie("token", token, {httpOnly: true}).json({
+        return res.status(200).cookie("token", token, {httpOnly: true}).json({
             message: `Welcome back ${user.fullName}`,
+            user,
             success: true
         })
     } catch (error) {
