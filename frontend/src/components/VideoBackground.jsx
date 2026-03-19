@@ -1,24 +1,19 @@
 import React from 'react'
 import useMovieById from '../hooks/useMovieById'
+import { useSelector } from 'react-redux'
 
-const VideoBackground = ({movieId}) => {
+const VideoBackground = ({movieId,bool}) => {
+  const trailerMovie = useSelector(store=>store.movie.trailerMovie)
   useMovieById(movieId)
-  
+  if (!trailerMovie) return null;
   return (
     <div className='w-[vw] overflow-hidden'>
-      {/* <iframe 
-      className=' scale-100 aspect-video'
-      src="https:" 
+      <iframe  
+      className={`${bool ? "w-[100%]" : "w-screen aspect-video" } `}
+      src={`https://www.youtube.com/embed/${trailerMovie.key}?si=OEFMwLEQ69o7Bkbz&autoplay=1&mute=1` }
       title="YouTube video player" 
       frameBorder="0" 
-      allowFullScreen>
-      </iframe> */}
-      <iframe  
-      className='w-screen aspect-video'
-      src="https://www.youtube.com/embed/oafxkMv4xnc?si=OEFMwLEQ69o7Bkbz" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allowfullscreen></iframe>
+      allowFullScreen></iframe>
     </div>
   )
 }
