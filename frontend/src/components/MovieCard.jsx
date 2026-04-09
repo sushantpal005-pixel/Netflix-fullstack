@@ -7,9 +7,9 @@ const MovieCard = ({posterPath, movieId}) => {
   const dispatch = useDispatch()
   if(posterPath === null) return null
   const handleOpen = ()=>{
-    dispatch(getId(movieId))
-    dispatch(setOpen(true))
-    dispatch(setSelectedMovie(movieId))
+    dispatch(getId(movieId));
+    dispatch(setOpen(true));
+    dispatch(setSelectedMovie(movieId));
   }
   return (
     <div className='w-48 pr-2' onClick={handleOpen} >

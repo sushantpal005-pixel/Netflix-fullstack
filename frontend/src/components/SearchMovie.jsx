@@ -6,14 +6,14 @@ import { setSearchMovieDetails } from '../redux/searchSlice'
 import { setLoading } from '../redux/userSlice'
 import MovieList from './MovieList'
 const SearchMovie = () => {
-    const [searchMovie, setSearchMovie] = useState("")
-    const dispatch = useDispatch()
-    const isLoading = useSelector(store => store.app.isLoading)
-    const { movieName, searchedMovie } = useSelector(store => store.searchMovie)
+    const [searchMovie, setSearchMovie] = useState("");
+    const dispatch = useDispatch();
+    const isLoading = useSelector(store => store.app.isLoading);
+    const { movieName, searchedMovie } = useSelector(store => store.searchMovie);
 
     const submitHandler = async (e) => {
-        e.preventDefault()
-        dispatch(setLoading(true))
+        e.preventDefault();
+        dispatch(setLoading(true));
         try {
             const res = await axios.get(`${SEARCH_MOVIE_URL}${searchMovie}&include_adult=false&language=en-US&page=1`, options);
             

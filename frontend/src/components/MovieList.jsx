@@ -1,5 +1,5 @@
-import React from 'react'
-import MovieCard from './MovieCard'
+import React from 'react';
+import MovieCard from './MovieCard';
 const MovieList = ({ title, movies=[], searchMovie=false }) => {
   return (
     <div className='px-8'>
